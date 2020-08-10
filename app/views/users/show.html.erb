@@ -1,0 +1,33 @@
+<div class ="container">
+ <div class="row">
+          <div class="col-xs-3">
+            <%= render 'users/user', user: @user,users: @users %>
+          </div>
+          <div class="col-xs-9">
+              <h2>Books</h2>
+              <table class="table table-inverse">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th><b>Title</b></th>
+                      <th><b>Opinion</b></th>
+                      <th colsoan="3"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <% @books.each do |book| %>
+                            <td><%= link_to book.title,book_path(book.id) %></td>
+                            <td><%= book.body %></td>
+                          <% end %>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+　　　　</div>
+</div>
+
+<!-- showでBook.newのからのレコードを入れて飛ばしてきたのが、@book⇨@bookを上のbookに変更する。部分テンプレートの場合 -->
+<!-- ⇨ここから_form.htmlerbに飛ぶ -->
+
+<!-- ユーザー詳細画面に、コメント数を追加 -->

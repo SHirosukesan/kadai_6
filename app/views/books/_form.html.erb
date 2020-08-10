@@ -1,0 +1,46 @@
+          <%= notice %>
+          <%= alert %>
+          <h2>User info</h2>
+          <div>
+             <table class="table table-inverse">
+                  <thead>
+                    <tr>
+                      <th><%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg", size:'100x100' %></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>name</b></td>
+                      <td><%= user.name %></td>
+                    </tr>
+                    <tr>
+                      <td><b>introduction</b></td>
+                      <td><%= user.introduction %></td>
+                    </tr>
+                         <tr>
+                          <td><b>follows</b></td>
+                          <td><%= user.follower.count %></td>
+                        </tr>
+                         <tr>
+                          <td><b>followers</b></td>
+                          <td><%= user.followed.count %></td>
+                        </tr>
+             </table>
+             <span class="btn btn-default btn-block col-xs-12"><%=link_to"",edit_user_path(user.id),class: "glyphicon glyphicon-wrench"%></span>
+          </div>
+
+
+          <div>
+            <h3>New book</h3>
+            <%= form_for(book) do |f| %>
+              <h5 >Title</h5>
+               <%= f.text_field :title ,class: "col-xs-12 book_title"%>
+              <h5>Body</h5>
+              <%= f.text_area :body ,class: "col-xs-12 book_body"%>
+              <%= f.submit 'Create Book', class:"btn btn-primary btn-block"%>
+            <% end %>
+          </div>
+
+
+
+<!-- 先ほど部分テンプレートで、@bookをbookに変更したため今回使用するのはbookになっている。ここからコントローラーに送られる -->

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+<header class="navbar navbar-inverse">
+   <nav class="nav navbar-nav navbar-left">
+    <h4 style="color:white">Bookers</h4>
+   </nav>
+    <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <span class="glyphicon glyphicon-home home">Home</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_path do %>
+              <span class="glyphicon glyphicon-user">Users</span>
+            <% end %>
+            <li>
+             <%= link_to books_path do %>
+             <span class="glyphicon glyphicon-book">Books</span>
+            <% end %>
+            </li>
+            <li>
+            <%= link_to destroy_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"> logout</span>
+            <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to root_path do %>
+              <span class="glyphicon glyphicon-home"> Home</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to home_about_path do %>
+              <span class="glyphicon glyphicon-link"> About</span>
+              <% end %>
+           </li>
+           <li>
+              <%= link_to new_user_registration_path do %>
+              <span class="glyphicon glyphicon-edit"> Sign up</span>
+              <% end %>
+           </li>
+            <li>
+            <%= link_to new_user_session_path do %>
+              <span class="glyphicon glyphicon-log-in"> login</span>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <%= yield %>
+</div>
+    <div class="right-chomp">&copy;Infratop.inc</div>
+  </body>
+</html>
